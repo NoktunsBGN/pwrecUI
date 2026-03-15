@@ -1,4 +1,22 @@
 #!/usr/bin/env python3
+#   pwrecUI - A simple GTK3 GUI for pw-record using Python 3
+#
+#   Copyright (C) 2026 Slavi Slavchev
+
+#   This program is free software; you can redistribute it and/or modify it
+#   under the terms of the GNU General Public License as published by the Free
+#   Software Foundation; either version 2 of the License, or (at your option)
+#   any later version.
+
+#   This program is distributed in the hope that it will be useful, but WITHOUT
+#   ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+#   FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
+#   more details.
+
+#   You should have received a copy of the GNU General Public License along
+#   with this program; if not, write to the Free Software Foundation, Inc.,
+#   51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+
 
 import os
 import signal
@@ -97,6 +115,22 @@ class VoiceRecorderWindow(Gtk.Window):
         cancel_button = Gtk.Button(label="Cancel")
         cancel_button.connect("clicked", lambda *_: Gtk.main_quit())
         buttons.pack_end(cancel_button, False, False, 0)
+
+        footer = Gtk.Label()
+        footer.set_use_markup(True)
+        footer.set_line_wrap(True)
+        footer.set_justify(Gtk.Justification.CENTER)
+
+        footer.set_markup(
+            "<span size='x-small'>"
+            "pwrecUI version 1.0, Copyright (C) 2026 Slavi Slavchev.\n"
+            "pwrecUI comes with ABSOLUTELY NO WARRANTY; This is free software, "
+            "and you are welcome to redistribute it under certain conditions as "
+            "defined by the GPL-2.0 license included with this program."
+            "</span>"
+        )
+
+        self.outer_box.pack_end(footer, False, False, 4)
 
         self.show_all()
 
